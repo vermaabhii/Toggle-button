@@ -9,22 +9,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Prevent scrolling */
-    position: relative; /* Allow positioning of the toggle button */
-    transition: background 0.5s ease; /* Smooth transition for background */
+    overflow: hidden;
+    position: relative;
+    transition: background 0.5s ease;
 }
 
-/* Spider-Man image container */
 .spiderman-container {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden; /* Hide overflow */
+    overflow: hidden;
 }
 
-/* Spider-Man images */
 .spiderman,
 .venom {
     position: absolute;
@@ -32,28 +30,25 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire background */
+    object-fit: cover;
     opacity: 1;
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for image swap and zoom effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Hide Venom by default */
 .venom {
     opacity: 0;
 }
 
-/* Show Venom when toggle is checked */
 .toggle-input:checked ~ .spiderman {
-    opacity: 0; /* Hide Spider-Man */
-    transform: scale(1.05); /* Slight zoom effect */
+    opacity: 0;
+    transform: scale(1.05);
 }
 
 .toggle-input:checked ~ .venom {
-    opacity: 1; /* Show Venom */
-    transform: scale(1.05); /* Slight zoom effect */
+    opacity: 1;
+    transform: scale(1.05);
 }
 
-/* Toggle button styles */
 .toggle {
     cursor: pointer;
     position: absolute;
@@ -62,26 +57,23 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     width: 125px;
     background: #ffffff;
-    transition: background 0.5s ease, transform 0.3s ease; /* Add transform transition */
-    left: 50%; /* Center horizontally */
-    bottom: 40px; /* Fixed position above the bottom */
-    transform: translateX(-50%); /* Adjust for centering */
-    z-index: 10; /* Make sure toggle is above images */
+    transition: background 0.5s ease, transform 0.3s ease;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
-/* Floating effect on hover */
 .toggle:hover {
-    transform: translateX(-50%) translateY(-5px); /* Move up */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Increase shadow */
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Change toggle background when active */
 .toggle-input:checked + .toggle {
-    background: #333; /* Change background when active */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add glow effect */
+    background: #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Toggle button knob */
 .toggle::before {
     content: "";
     position: absolute;
@@ -97,20 +89,17 @@ body {
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Move knob when toggle is active */
 .toggle-input:checked + .toggle::before {
     left: calc(100% - 70px);
     background-color: #ffffff;
     border-color: rgb(202, 99, 99);
 }
 
-/* Aesthetic background transition */
 body {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
-    animation: backgroundAnimation 10s ease infinite; /* Background animation */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    animation: backgroundAnimation 10s ease infinite;
 }
 
-/* Keyframes for background animation */
 @keyframes backgroundAnimation {
     0% {
         background: linear-gradient(135deg, #ff7e5f, #feb47b);
@@ -123,12 +112,10 @@ body {
     }
 }
 
-/* Add a ripple effect */
 .toggle:active::before {
     animation: ripple 0.6s linear;
 }
 
-/* Ripple animation */
 @keyframes ripple {
     0% {
         transform: scale(1);
@@ -137,5 +124,30 @@ body {
     100% {
         transform: scale(2);
         opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .toggle {
+        width: 100px;
+        bottom: 20px;
+    }
+
+    .toggle::before {
+        height: 40px;
+        width: 40px;
+    }
+
+    .toggle-input:checked + .toggle::before {
+        left: calc(100% - 60px);
+    }
+
+    .spiderman,
+    .venom {
+        transform: scale(1);
+    }
+
+    .toggle:hover {
+        transform: translateX(-50%) translateY(-3px);
     }
 }
