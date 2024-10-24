@@ -5,38 +5,41 @@
 }
 
 body {
-    height: 100vh;
+    height: 100vh; /* Full height of the viewport */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     position: relative;
     transition: background 0.5s ease;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
 }
 
 .spiderman-container {
-    position: absolute;
+    position: absolute; /* Positioning to cover entire body */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden;
+    display: flex; /* Flex to center elements */
+    align-items: center; /* Center toggle vertically */
+    justify-content: center; /* Center toggle horizontally */
 }
 
 .spiderman,
 .venom {
-    position: absolute;
+    position: absolute; /* Cover the whole container */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    object-fit: cover; /* Ensure images cover the container */
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .venom {
-    opacity: 0;
+    opacity: 0; /* Start with Venom hidden */
 }
 
 .toggle-input:checked ~ .spiderman {
@@ -52,15 +55,15 @@ body {
 .toggle {
     cursor: pointer;
     position: absolute;
-    height: 12px;
+    height: 15px; /* Toggle height */
     border-radius: 25px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    width: 125px;
+    width: 125px; /* Toggle width */
     background: #ffffff;
     transition: background 0.5s ease, transform 0.3s ease;
-    left: 50%;
-    bottom: 40px;
-    transform: translateX(-50%);
+    left: 50%; /* Center toggle horizontally */
+    bottom: 40px; /* Distance from bottom */
+    transform: translateX(-50%); /* Center the toggle */
     z-index: 10;
 }
 
@@ -70,19 +73,19 @@ body {
 }
 
 .toggle-input:checked + .toggle {
-    background: #333;
+    background: #333; /* Background when checked */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .toggle::before {
     content: "";
     position: absolute;
-    height: 50px;
+    height: 50px; /* Circle height */
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    border-radius: 50%;
+    width: 50px; /* Circle width */
+    border-radius: 50%; /* Make it circular */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     background: rgb(202, 99, 99);
     border: 10px solid #ffffff;
@@ -90,26 +93,9 @@ body {
 }
 
 .toggle-input:checked + .toggle::before {
-    left: calc(100% - 70px);
+    left: calc(100% - 60px); /* Adjust position when checked */
     background-color: #ffffff;
     border-color: rgb(202, 99, 99);
-}
-
-body {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    animation: backgroundAnimation 10s ease infinite;
-}
-
-@keyframes backgroundAnimation {
-    0% {
-        background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    }
-    50% {
-        background: linear-gradient(135deg, #86a8e7, #91eae4);
-    }
-    100% {
-        background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    }
 }
 
 .toggle:active::before {
@@ -127,27 +113,53 @@ body {
     }
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .toggle {
-        width: 100px;
-        bottom: 20px;
+        width: 100px; /* Adjust toggle width for mobile */
+        bottom: 20px; /* Adjust distance from bottom */
     }
 
     .toggle::before {
-        height: 40px;
+        height: 40px; /* Smaller circle for mobile */
         width: 40px;
     }
 
     .toggle-input:checked + .toggle::before {
-        left: calc(100% - 60px);
+        left: calc(100% - 50px); /* Adjust checked position */
     }
 
     .spiderman,
     .venom {
-        transform: scale(1);
+        transform: scale(1); /* Reset scaling for images */
     }
 
     .toggle:hover {
         transform: translateX(-50%) translateY(-3px);
+    }
+}
+
+/* Additional styles for even smaller screens */
+@media (max-width: 480px) {
+    .toggle {
+        width: 80px; /* Further adjust width for small screens */
+    }
+
+    .toggle::before {
+        height: 35px; /* Smaller toggle circle */
+        width: 35px;
+    }
+
+    .toggle-input:checked + .toggle::before {
+        left: calc(100% - 40px); /* Adjust checked position */
+    }
+
+    .spiderman,
+    .venom {
+        transform: scale(1); /* Ensure images fit well */
+    }
+
+    .toggle:hover {
+        transform: translateX(-50%) translateY(-2px); /* Smaller hover effect */
     }
 }
