@@ -12,28 +12,29 @@ body {
     overflow: hidden;
     position: relative;
     transition: background 0.5s ease;
+    background-color: #ff7e5f; /* Fallback color */
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
 }
 
 .spiderman-container {
-    position: absolute; /* Positioning to cover entire body */
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex; /* Flex to center elements */
-    align-items: center; /* Center toggle vertically */
-    justify-content: center; /* Center toggle horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .spiderman,
 .venom {
-    position: absolute; /* Cover the whole container */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
-    object-fit: cover; /* Ensure images cover the container */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -55,15 +56,15 @@ body {
 .toggle {
     cursor: pointer;
     position: absolute;
-    height: 15px; /* Toggle height */
+    height: 20px; /* Toggle height */
     border-radius: 25px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     width: 125px; /* Toggle width */
     background: #ffffff;
     transition: background 0.5s ease, transform 0.3s ease;
-    left: 50%; /* Center toggle horizontally */
-    bottom: 40px; /* Distance from bottom */
-    transform: translateX(-50%); /* Center the toggle */
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
     z-index: 10;
 }
 
@@ -73,19 +74,19 @@ body {
 }
 
 .toggle-input:checked + .toggle {
-    background: #333; /* Background when checked */
+    background: #333;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .toggle::before {
     content: "";
     position: absolute;
-    height: 50px; /* Circle height */
+    height: 50px;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px; /* Circle width */
-    border-radius: 50%; /* Make it circular */
+    width: 50px;
+    border-radius: 50%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     background: rgb(202, 99, 99);
     border: 10px solid #ffffff;
@@ -93,7 +94,7 @@ body {
 }
 
 .toggle-input:checked + .toggle::before {
-    left: calc(100% - 60px); /* Adjust position when checked */
+    left: calc(100% - 60px);
     background-color: #ffffff;
     border-color: rgb(202, 99, 99);
 }
@@ -121,12 +122,12 @@ body {
     }
 
     .toggle::before {
-        height: 40px; /* Smaller circle for mobile */
+        height: 40px;
         width: 40px;
     }
 
     .toggle-input:checked + .toggle::before {
-        left: calc(100% - 50px); /* Adjust checked position */
+        left: calc(100% - 50px);
     }
 
     .spiderman,
@@ -139,19 +140,20 @@ body {
     }
 }
 
-/* Additional styles for even smaller screens */
+/* Additional styles for smaller screens */
 @media (max-width: 480px) {
     .toggle {
-        width: 80px; /* Further adjust width for small screens */
+        width: 100px; /* Slightly bigger on small screens */
+        height: 20px;
     }
 
     .toggle::before {
-        height: 35px; /* Smaller toggle circle */
-        width: 35px;
+        height: 45px;
+        width: 45px;
     }
 
     .toggle-input:checked + .toggle::before {
-        left: calc(100% - 40px); /* Adjust checked position */
+        left: calc(100% - 50px); /* Adjust checked position */
     }
 
     .spiderman,
@@ -160,6 +162,6 @@ body {
     }
 
     .toggle:hover {
-        transform: translateX(-50%) translateY(-2px); /* Smaller hover effect */
+        transform: translateX(-50%) translateY(-2px);
     }
 }
