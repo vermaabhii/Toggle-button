@@ -1,4 +1,4 @@
-# Toggle Button
+# Toggle Button 
 
 This project features a toggle button that switches between two full-screen images: one of Spider-Man and the other of Venom. The images transition smoothly using opacity and scaling animations.
 
